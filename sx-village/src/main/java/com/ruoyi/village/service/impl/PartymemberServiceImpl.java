@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.ruoyi.common.annotation.DataSource;
 import com.ruoyi.common.enums.DataSourceType;
+import com.ruoyi.village.domain.Pedulevel;
 import com.ruoyi.village.domain.Pmcount;
+import com.ruoyi.village.domain.pubObjApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.village.mapper.PartymemberMapper;
@@ -102,9 +104,22 @@ public class PartymemberServiceImpl implements IPartymemberService
 
 	@Override
 	@DataSource(value = DataSourceType.SXVILLAGE)
-	public List<Partymember> selectGrouplist()
+	public List<Partymember> selectGrouplist(pubObjApi group)
 	{
-		return partymemberMapper.selectGrouplist();
+		return partymemberMapper.selectGrouplist(group);
 	}
-	
+
+	@Override
+	@DataSource(value = DataSourceType.SXVILLAGE)
+	public List<Pedulevel> countbyedulevel(){
+		return partymemberMapper.countbyedulevel();
+	}
+
+
+	@Override
+	@DataSource(value = DataSourceType.SXVILLAGE)
+	public List<Partymember> selectPartymemberListBytype(pubObjApi group)
+	{
+		return partymemberMapper.selectPartymemberListBytype(group);
+	}
 }

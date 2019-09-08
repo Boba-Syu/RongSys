@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ruoyi.common.annotation.DataSource;
 import com.ruoyi.common.enums.DataSourceType;
+import com.ruoyi.village.domain.PersonApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.village.mapper.VillagerInfoMapper;
@@ -87,5 +88,11 @@ public class VillagerInfoServiceImpl implements IVillagerInfoService
 	{
 		return villagerInfoMapper.deleteVillagerInfoByIds(Convert.toStrArray(ids));
 	}
-	
+
+	@Override
+	@DataSource(value = DataSourceType.SXBAODIAN)
+	public List<VillagerInfo> selectPersonAllByApi(PersonApi person)
+	{
+		return villagerInfoMapper.selectPersonAllByApi(person);
+	}
 }
